@@ -1,0 +1,92 @@
+﻿@using PrimeHomes.ViewModels
+@model ShoppingCartViewModel
+
+
+
+@{
+    Layout = "_BootstrappLayout";
+}
+  <!-- Replace "test" with your own sandbox Business account app client ID -->
+  <script src="https://www.paypal.com/sdk/js?client-id=AXZ_1iZA4Xcgbqp__g5mCvgKZbDHXMUcxqlywx0dboMt1C2_fb0ax2P0hG0actgNBNE_IS2c1zEW8iCO&currency=USD"></script>
+  <!-- Set up a container element for the button -->
+
+ <h2>Shopping cart</h2>
+    <h4>Here are the Properties in your shopping cart.</h4>
+<div class="row checkoutForm d-flex justify-content-center container-fluid">
+    
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Selected amount</th>
+                <th>Property</th>
+                <th class="text-right">Price</th>
+                <th class="text-right">Subtotal</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var line in Model.ShoppingCart.ShoppingCartItems)
+            {
+                <tr>
+                    <td class="text-center">@line.Amount</td>
+
+                    <td class="text-left">@line.Property.Name</td>
+                    <td class="text-right">@line.Property.Price.ToString("c")</td>
+                    <td class="text-right">
+                        @((line.Amount * line.Property.Price).ToString("c"))
+                    </td>
+                    <td class="text-center">
+                        <a class="glyphicon glyphicon-remove text-danger remove" asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart" asp-route-PropertyId="@line.Property.Id"></a>
+                        </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-right">Total:</td>
+                <td class="text-right">
+                    @Model.ShoppingCartTotal.ToString("c")
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <div class="text-right">
+        <div class="btn-group float-left ">
+           
+            <div id="paypal-button-container"></div>
+            <a class="btn-group">
+                
+               
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    paypal.Buttons({
+      // Sets up the transaction when a payment button is clicked
+      createOrder: (data, actions) => {
+        return actions.order.create({
+          purchase_units: [{
+            amount: {
+              value: '77.44' // Can also reference a variable or function
+            }
+          }]
+        });
+      },
+      // Finalize the transaction after payer approval
+      onApprove: (data, actions) => {
+        return actions.order.capture().then(function(orderData) {
+          // Successful capture! For dev/demo purposes:
+          console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+          const transaction = orderData.purchase_units[0].payments.captures[0];
+          alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
+          // When ready to go live, remove the alert and show a success message within this page. For example:
+          // const element = document.getElementById('paypal-button-container');
+          // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+          // Or go to another URL:  actions.redirect('thank_you.html');
+        });
+      }
+    }).render('#paypal-button-container');
+  </script>

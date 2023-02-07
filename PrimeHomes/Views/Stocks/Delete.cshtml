@@ -1,0 +1,28 @@
+﻿@model PrimeHomes.Models.Stock
+
+@{
+  ViewData["Title"] = "adelete";
+    Layout = "_AdminLayout";
+}
+
+
+
+<h5>Are you sure you want to delete @Model.Name?</h5>
+<div class="row d-flex justify-content-center">
+    <div class="col-md-6">
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            <h5>@Html.DisplayFor(model => model.Name)</h5>
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger float-right" /> 
+        <a class="Float-left btn btn-primary" asp-action="Index">Back to List</a>
+    </form>
+</div>
+</div>

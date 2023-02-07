@@ -1,0 +1,53 @@
+﻿@model PropertyListViewModel
+<link rel="stylesheet" href="\css\styles.css" />
+
+   <!-- Team-->
+        <div class="page-section bg-light" id="team">
+            <div class="container">
+                @if (Model == null)
+        {
+            <h4>Coming soon..</h4>
+        }
+        <div class="text-center">
+                  <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
+                    <h3 class="section-subheading text-muted">The minds behind PrimeHomes.</h3>
+                </div>
+                <div class="row ">
+        @foreach (var item in Model.TeamMembers)
+       {
+            
+                 
+                    <div class="col-lg-4">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="@item.ImageUrl" alt="..." />
+                            <h4>@item.Name</h4>
+                            <p class="text-muted">@item.Position</p>
+                        @if(@item.TwitterUrl!= null)
+                        {
+                           <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Twitter Profile"><i class="fab fa-twitter"></i></a> 
+                        }
+                        @if(@item.FacebookUrl!= null)
+                        {
+                        
+                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Facebook Profile"><i class="fab fa-facebook-f"></i></a>
+                        }
+                        @if(@item.LinkendenUrl!= null)
+                        {
+                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                        }
+                        </div>
+                    </div>
+           
+       }
+       
+                  
+               
+                    
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">Contact any one of us for more enquiries</p></div>
+                </div>
+            </div>
+        </div>
+
+         

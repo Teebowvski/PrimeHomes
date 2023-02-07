@@ -1,0 +1,73 @@
+﻿
+@model PrimeHomes.ViewModels.ContactViewModel
+
+
+
+<hr class="featurette-divider">
+<section class="content">
+     <div class="pb-2  text-center"><h2 class="border-bottom">Contact Us</h2></div>
+      <!-- Default box -->
+      <div class="card">
+        <div class="card-body row">
+          <div class="col-5 text-center d-flex align-items-center justify-content-center">
+            <div class="">
+              <h2><span style="font-weight:300;">Prime</span><strong>Homes</strong></h2>
+              <p class="lead mb-5">Banjul, The Gambia<br>
+                Phone: +2203826357/+2207522184<br >
+                Whatsapp: +447480062275
+              </p>
+            </div>
+          </div>
+          
+                <div class="col-7">
+                     @if (ViewBag.Message == null)
+            {
+                    <form  method="post" >
+            <div class="form-group">
+              <label asp-for="Name">Name</label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" 
+                            class="text-muted"></span>
+            </div>
+            <div class="form-group">
+               <label asp-for="Email">Email</label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" 
+                            class="text-muted"></span>
+            </div>
+              <div class="form-group">
+                            <label asp-for="Subject">Subject</label>
+                            <input asp-for="Subject" class="form-control" />
+                            <span asp-validation-for="Subject" 
+                            class="text-muted"></span>
+                        </div>
+          
+            <div class="form-group">
+              <label asp-for="Message">Message</label>
+                            <textarea rows="5" cols="15" 
+                            asp-for="Message" class="form-control"></textarea>
+                            <span asp-validation-for="Message" 
+                            class="text-muted"></span>
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary" value="Send message">
+            </div>
+            </form>
+         
+          }
+           <div>
+                @if (ViewBag.Message != null)
+            {
+                    <div class="text-center text-primary align-content-center"><h4>@ViewBag.Message</h4></div>
+
+
+                }
+            </div>
+           </div>
+        </div>
+        <div>
+           
+        </div>
+      </div>
+
+    </section>

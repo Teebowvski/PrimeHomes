@@ -1,0 +1,69 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using PrimeHomes.Areas.Identity.Data
+@model IEnumerable<IdentityRole>
+@{
+    ViewBag.Title = "Roles";
+    Layout = "_AdminLayout";
+}
+
+
+@if (!Model.Any())
+
+{
+   
+    <div class="card">
+        <div class="card-header">
+            No users created yet
+        </div>
+        <div class="card-body ">
+            <h5 class="card-title">
+                Use the add new role button to create new role
+            </h5>
+            <a class="btn btn-primary float-right" style="width:auto"
+               asp-controller="Roles" asp-action="CreateRole">
+                  <i class="fa-solid fa-user-plus"></i> Add new role
+            </a>
+        </div>
+    </div>
+}
+else{
+
+     <div class="row d-flex justify-content-center">
+    <div class="col-md-10">
+        <a class="btn btn-primary float-right"  asp-controller="Roles" asp-action="CreateRole">   <i class="fa-solid fa-user-plus"></i> Create New Role</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+             <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            
+            <td>
+                <a asp-controller="Roles" asp-action="EditRole" asp-route-id="@item.Id">Edit</a> |
+               
+                <a  asp-controller="Roles" asp-action="DeleteRole" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+</div>
+    
+}

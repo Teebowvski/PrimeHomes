@@ -1,0 +1,27 @@
+﻿@model PrimeHomes.Models.Status
+
+@{
+   
+    Layout = "_AdminLayout";
+     ViewData["Title"] = "Details";
+}
+
+<h1>Details of @Model.Name</h1>
+
+<div class="row d-flex justify-content-center">
+    <div class="col-md-6">
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+           <h5> @Html.DisplayFor(model => model.Name)</h5>
+        </dd>
+    </dl>
+
+
+    <a class="float-right btn btn-outline-success" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> 
+    <a class="float-left btn btn-primary" asp-action="Index">Back to List</a>
+
+</div>
+</div>

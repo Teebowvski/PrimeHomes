@@ -1,0 +1,150 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using PrimeHomes.Areas.Identity.Data
+@inject SignInManager<ApplicationUser> signInManager;
+   
+    @model PropertyListViewModel
+    <style>
+
+        a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+a {
+  color: #0077cc;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+}
+
+    </style>
+  
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light  ">
+  <!-- Container wrapper -->
+  <div class="container">
+      <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+    <!-- Navbar brand -->
+    
+        
+      @*<img
+        src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
+        height="16"
+        alt="MDB Logo"
+        loading="lazy"
+        style="margin-top: -1px;"
+      />*@
+     <span style="font-weight:300;">Prime</span ><strong style="font-weight:500;">Homes</strong>
+    </a>
+
+    <!-- Toggle button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-mdb-toggle="collapse"
+      data-mdb-target="#navbarButtonsExample"
+      aria-controls="navbarButtonsExample"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarButtonsExample">
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Property" asp-action="List">Properties</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Blogs" asp-action="Blogs">Blog</a>
+                        </li>
+                    
+            
+                        
+                          <!-- Navbar dropdown -->
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle text-dark"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-mdb-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Contact
+          </a>
+          <!-- Dropdown menu -->
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+               <li >
+              <a class="dropdown-item text-dark" asp-area="" asp-controller="Contact" asp-action="Index">Contact Us</a>
+            </li>
+            <li>
+              <a class="dropdown-item text-dark" asp-area="" asp-controller="Services" asp-action="Index">Services</a>
+            </li>
+            
+            <li>
+                <a class="dropdown-item text-dark" asp-area="" asp-controller="TeamMembers" asp-action="TeamsPage">Team</a>
+            </li>
+            
+            
+          </ul>
+        </li>
+         @if(signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                {
+                    <li>
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">Admin</a>
+                    </li>
+                }
+      </ul>
+      
+      <!-- Left links -->
+      
+      <div class="d-flex align-items-center">
+         @await Component.InvokeAsync("ShoppingCartSummary")
+         <partial name ="_LoginPartial"/>
+      </div>
+    </div>
+    <!-- Collapsible wrapper -->
+  </div>
+  <!-- Container wrapper -->
+  
+</nav>

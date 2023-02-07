@@ -1,0 +1,181 @@
+﻿@model Blog
+
+@{
+    Layout = "_BootstrappLayout";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<div id="intro" class="p-5 text-center bg-light">
+      <h1 class="mb-0 h4">@Model.Title</h1>
+    </div>
+ <main class="mt-4 mb-5">
+    <div class="container">
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-md-8 mb-4">
+          <!--Section: Post data-mdb-->
+          <section class="border-bottom mb-4">
+            <img src="@Model.BlogImageUrl"
+              class="img-fluid shadow-2-strong rounded-5 mb-4" alt="" />
+
+            <div class="row align-items-center mb-4">
+              <div class="col-lg-6 text-center text-lg-start mb-3 m-lg-0">
+                <img src="@Model.AuthorImageUrl" class="rounded-5 shadow-1-strong me-2"
+                  height="35" alt="" loading="lazy" />
+                <span> Published <u>@Model.DateCreated.ToString("MM/dd/yyyyy")</u> @Model.AuthorName</span>
+                <a href="" class="text-dark">Anna</a>
+              </div>
+
+              <div class="col-lg-6 text-center text-lg-end">
+                  @if (Model.FacebookUrl != null)
+                 {
+                      <button type="button" class="btn btn-primary px-3 me-1" style="background-color: #3b5998;">
+                  <i class="fab fa-facebook-f"></i>
+                </button>
+                 }
+                            @if (Model.TwitterUrl != null)
+                            {      <button type="button" class="btn btn-primary px-3 me-1" style="background-color: #55acee;">
+                  <i class="fab fa-twitter"></i>
+                </button>  }
+                       @if (Model.InstagramUrl != null)
+                            { <button type="button" class="btn btn-primary px-3 me-1" style="background-color: #0082ca;">
+                  <i class="fab fa-linkedin"></i>
+                </button> }
+                
+                
+              </div>
+            </div>
+          </section>
+          <!--Section: Post data-mdb-->
+
+          <!--Section: Text-->
+          <section>
+            <p>
+             @Model.Content
+            </p>
+
+            
+
+            <p>
+              @Model.MainContent
+            </p>
+
+            <p class="note note-light">
+             @Model.MainContent2
+            </p>
+
+          
+
+            <img src="@Model.BlogImageUrl2" class="img-fluid shadow-1-strong rounded-5 mb-4"
+              alt="" />
+
+            <p>
+                @Model.MainContent3
+            </p>
+            
+          </section>
+          <!--Section: Text-->
+
+          <!--Section: Share buttons-->
+          <section class="text-center border-top border-bottom py-4 mb-4">
+            <p><strong>Share with your friends:</strong></p>
+
+            <a href="Facebook.com" target="_blank" class="btn btn-primary me-1" style="background-color: #3b5998;">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="Twitter.com" target="_blank" class="btn btn-primary me-1" style="background-color: #55acee;">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.linkedin.com/" target="_blank" class="btn btn-primary me-1" style="background-color: #0082ca;">
+              <i class="fab fa-linkedin"></i>
+            </a>
+           
+          </section>
+          <!--Section: Share buttons-->
+
+          <!--Section: Author-->
+          <section class="border-bottom mb-4 pb-4">
+            <div class="row">
+              <div class="col-3">
+                <img src="@Model.AuthorImageUrl"
+                  class="img-fluid shadow-1-strong rounded-5" alt="" />
+              </div>
+
+              <div class="col-9">
+                <p class="mb-2"><strong>@Model.AuthorName</strong></p>
+                 @if (Model.FacebookUrl != null)
+                 {
+                      <a href="@Model.FacebookUrl" class="text-dark"><i class="fab fa-facebook-f me-1"></i>
+                </a>
+                 }
+                            @if (Model.TwitterUrl != null)
+                            {      <a href="@Model.TwitterUrl" class="text-dark"><i class="fab fa-twitter me-1"></i>
+                </a>  }
+                       @if (Model.InstagramUrl != null)
+                            { <a href="@Model.InstagramUrl" class="text-dark"><i class="fab fa-instagram me-1"></i>
+                </a> }
+                 @if (Model.LinkdelUrl != null)
+                            { <a href="@Model.LinkdelUrl" class="text-dark"><i class="fab fa-linkedin me-1"></i>
+                </a> }
+                
+                
+                <p>
+                  @Model.AboutAuthor!
+                </p>
+              </div>
+            </div>
+          </section>
+          <!--Section: Author-->
+
+          
+
+        
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-4 mb-4">
+          <!--Section: Sidebar-->
+          <section class="sticky-top" style="top: 80px;">
+            <!--Section: Ad-->
+            <section class="text-center border-bottom pb-4 mb-4">
+              <div class="bg-image hover-overlay ripple mb-4">
+                <img
+                  src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/content/en/_mdb5/standard/about/assets/mdb5-about.webp"
+                  class="img-fluid" />
+                <a href="https://mdbootstrap.com/docs/standard/" target="_blank">
+                  <div class="mask" style="background-color: rgba(57, 192, 237, 0.2);"></div>
+                </a>
+              </div>
+              <h5>Material Design for Bootstrap 5</h5>
+
+              <p>
+                500+ components, free templates, 1-min installation, extensive tutorial, huge
+                community. MIT license - free for personal & commercial use
+              </p>
+              <a role="button" class="btn btn-primary" href="https://mdbootstrap.com/docs/standard/"
+                target="_blank">Download for free<i class="fas fa-download ms-2"></i></a>
+            </section>
+            <!--Section: Ad-->
+
+            <!--Section: Video-->
+            <section class="text-center">
+              <h5 class="mb-4">Learn the newest Bootstrap 5</h5>
+
+              <div class="embed-responsive embed-responsive-16by9 shadow-4-strong">
+                <iframe class="embed-responsive-item rounded-5" src="https://www.youtube.com/embed/c9B4TPnak1A"
+                  allowfullscreen></iframe>
+              </div>
+            </section>
+            <!--Section: Video-->
+          </section>
+          <!--Section: Sidebar-->
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+    </div>
+  </main>
+  <!--Main layout-->
+
+ <partial name="_Footer" />

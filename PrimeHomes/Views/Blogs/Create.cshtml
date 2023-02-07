@@ -1,0 +1,104 @@
+﻿@model PrimeHomes.Models.Blog
+
+@{
+    ViewData["Title"] = "Create new Blogpost";
+    Layout = "_AdminLayout";
+}
+
+
+
+
+<div class="row d-flex justify-content-center">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="DateCreated" class="control-label"></label>
+                <input asp-for="DateCreated" class="form-control" type="date"  />
+                <span asp-validation-for="DateCreated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Content" class="control-label"></label>
+                @Html.TextAreaFor(m => m.Content, new { @class = "form-control" })
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MainContent" class="control-label"></label>
+               @Html.TextAreaFor(m => m.MainContent, new { @class = "form-control" })  
+                <span asp-validation-for="MainContent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MainContent2" class="control-label"></label>
+               @Html.TextAreaFor(m => m.MainContent2, new { @class = "form-control" })  
+                <span asp-validation-for="MainContent2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MainContent3" class="control-label"></label>
+               @Html.TextAreaFor(m => m.MainContent3, new { @class = "form-control" })  
+                <span asp-validation-for="MainContent3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BlogImageUrl" class="control-label"></label>
+                <input asp-for="BlogImageUrl" class="form-control" />
+                <span asp-validation-for="BlogImageUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BlogImageUrl2" class="control-label"></label>
+                <input asp-for="BlogImageUrl2" class="form-control" />
+                <span asp-validation-for="BlogImageUrl2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AuthorName" class="control-label"></label>
+                <input asp-for="AuthorName" class="form-control" />
+                <span asp-validation-for="AuthorName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AboutAuthor" class="control-label"></label>
+                <input asp-for="AboutAuthor" class="form-control" />
+                <span asp-validation-for="AboutAuthor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AuthorImageUrl" class="control-label"></label>
+                <input asp-for="AuthorImageUrl" class="form-control" />
+                <span asp-validation-for="AuthorImageUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FacebookUrl" class="control-label"></label>
+                <input asp-for="FacebookUrl" class="form-control" />
+                <span asp-validation-for="FacebookUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TwitterUrl" class="control-label"></label>
+                <input asp-for="TwitterUrl" class="form-control" />
+                <span asp-validation-for="TwitterUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InstagramUrl" class="control-label"></label>
+                <input asp-for="InstagramUrl" class="form-control" />
+                <span asp-validation-for="InstagramUrl" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="LinkdelUrl" class="control-label"></label>
+                <input asp-for="LinkdelUrl" class="form-control" />
+                <span asp-validation-for="LinkdelUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-outline-success float-right" />
+                 <a class="btn btn-primary float-left" asp-action="Index">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+   
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

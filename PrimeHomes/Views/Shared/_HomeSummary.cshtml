@@ -1,0 +1,41 @@
+﻿@model PropertyListViewModel
+ <link href="~/css/features.css" rel="stylesheet" />
+<section></section>
+<div class="container px-4 py-5" id="custom-cards">
+    <h2 class="pb-2 border-bottom">Featured Properties</h2>
+    <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+            @foreach (var item in Model.Properties.Take(3))
+           {
+              
+    
+
+    
+      <div class="col">
+        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('@item.ImageUrl');">
+          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">@item.Name</h3>
+            <ul class="d-flex list-unstyled mt-auto">
+              <li class="me-auto">
+                <img src="@item.ImageUrl1" alt="" width="32" height="32" class="rounded-circle border border-white">
+              </li>
+              <li class="d-flex align-items-center me-3">
+                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"/></svg>
+                <small>@item.Area.Name</small>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+
+     
+      
+
+           }
+            
+           </div>
+           </div>
+            
+           
+            <!-- END PANEL -->
+    
