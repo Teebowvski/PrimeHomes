@@ -1,26 +1,31 @@
 ﻿@model IEnumerable<PrimeHomes.Models.TeamMembers>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "List of TeamMembers";
+     Layout = "_AdminLayout";
 }
 
-<h1>Index</h1>
+
 
 <p>
-    <a asp-action="Create">Create New</a>
+    
 </p>
+<div class="row d-flex justify-content-center">
+    <div class="col-md-10">
 <table class="table">
+    <a class="float-right btn btn-primary" asp-action="Create"> <i class="fa-solid fa-people-group"></i> Create New</a>
     <thead>
         <tr>
+             <th>
+                @Html.DisplayNameFor(model => model.ImageUrl)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Position)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImageUrl)
-            </th>
+           
             <th>
                 @Html.DisplayNameFor(model => model.FacebookUrl)
             </th>
@@ -36,15 +41,16 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+             <td>
+               <img src="@item.Name" style="width:60px;" class="rounded-circle">
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Position)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageUrl)
-            </td>
+           
             <td>
                 @Html.DisplayFor(modelItem => item.FacebookUrl)
             </td>
@@ -63,3 +69,5 @@
 }
     </tbody>
 </table>
+</div>
+</div>
